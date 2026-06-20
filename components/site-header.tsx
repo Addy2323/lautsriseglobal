@@ -48,7 +48,7 @@ const servicesDropdownItems = [
     icon: Truck,
     title: 'Logistics',
     desc: 'Reliable cargo shipping, local delivery, and global supply chains.',
-    href: '/#services',
+    href: 'https://logistics.lotusriseglobal.com/',
   },
   {
     icon: Gift,

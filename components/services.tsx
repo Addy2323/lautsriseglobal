@@ -25,7 +25,7 @@ const services = [
     title: 'LotusRise Logistics',
     desc: 'Source, ship and deliver products locally and internationally.',
     cta: 'Learn More',
-    href: '/#services',
+    href: 'https://logistics.lotusriseglobal.com/',
   },
   {
     icon: Gift,

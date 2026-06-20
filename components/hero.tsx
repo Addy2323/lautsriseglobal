@@ -164,50 +164,13 @@ function GoldenParticles({ count = 28 }: { count?: number }) {
 }
 
 /* ═══════════════════════════════════════════════════════
-   SLIDE PROGRESS INDICATOR
+   SLIDE PROGRESS TIMINGS
    ═══════════════════════════════════════════════════════ */
 
-function SlideIndicators({
-  total,
-  active,
-  onGo,
-}: {
-  total: number
-  active: number
-  onGo: (i: number) => void
-}) {
-  return (
-    <div className="absolute bottom-8 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2.5 sm:bottom-10">
-      {Array.from({ length: total }, (_, i) => (
-        <button
-          key={i}
-          onClick={() => onGo(i)}
-          aria-label={`Go to slide ${i + 1}`}
-          className="group relative h-2 cursor-pointer rounded-full transition-all duration-500"
-          style={{ width: i === active ? 40 : 12 }}
-        >
-          {/* track */}
-          <span className="absolute inset-0 rounded-full bg-white/20" />
-          {/* fill */}
-          <motion.span
-            className="absolute inset-0 rounded-full"
-            style={{
-              background: 'linear-gradient(90deg, #D4A03A, #b8860b)',
-              transformOrigin: 'left',
-            }}
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: i === active ? 1 : 0 }}
-            transition={
-              i === active
-                ? { duration: 10, ease: 'linear' }
-                : { duration: 0.3 }
-            }
-          />
-        </button>
-      ))}
-    </div>
-  )
-}
+const AUTOPLAY_DELAY = 5000 // 5 seconds stationary
+const TRANSITION_SPEED = 1000 // 1 second crossfade
+const TOTAL_DURATION = (AUTOPLAY_DELAY + TRANSITION_SPEED) / 1000 // 6 seconds total
+
 
 /* ═══════════════════════════════════════════════════════
    SCROLL INDICATOR
@@ -398,6 +361,7 @@ export function Hero() {
   const swiperRef = useRef<SwiperType | null>(null)
   const [activeIndex, setActiveIndex] = useState(0)
   const [kenBurnsKey, setKenBurnsKey] = useState(0)
+  const [progressKey, setProgressKey] = useState(0)
 
   const goToSlide = useCallback((i: number) => {
     swiperRef.current?.slideTo(i)
@@ -417,8 +381,8 @@ export function Hero() {
         modules={[Autoplay, EffectFade]}
         effect="fade"
         fadeEffect={{ crossFade: true }}
-        speed={1500}
-        autoplay={{ delay: 10000, disableOnInteraction: false }}
+        speed={TRANSITION_SPEED}
+        autoplay={{ delay: AUTOPLAY_DELAY, disableOnInteraction: false }}
         loop
         allowTouchMove
         onSwiper={(sw) => {
@@ -427,6 +391,7 @@ export function Hero() {
         onSlideChange={(sw) => {
           setActiveIndex(sw.realIndex)
           setKenBurnsKey((k) => k + 1)
+          setProgressKey((k) => k + 1)
         }}
         className="h-full w-full"
       >
@@ -529,12 +494,27 @@ export function Hero() {
         </span>
       </motion.div>
 
-      {/* ── Slide Indicators ── */}
-      <SlideIndicators
-        total={slides.length}
-        active={activeIndex}
-        onGo={goToSlide}
-      />
+      {/* ── Premium Top Progress Bar ── */}
+      <div className="pointer-events-none absolute inset-0 z-40">
+        <div className="relative mx-auto flex h-full w-full flex-col lg:grid lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="absolute inset-0 lg:relative lg:col-start-2 lg:h-full lg:w-full lg:pt-36 lg:pb-12 lg:pr-12 xl:pr-16">
+            <div className="relative h-full w-full lg:rounded-2xl">
+              {/* Progress track (light gray #E5E7EB with opacity for subtle background blending) */}
+              <div className="absolute top-[72px] sm:top-[80px] lg:top-0 left-0 right-0 h-[4px] overflow-hidden rounded-none lg:rounded-t-2xl bg-[#E5E7EB]/30">
+                {/* Gold progress line (#D4AF37) */}
+                <motion.div
+                  key={progressKey}
+                  className="h-full w-full bg-[#D4AF37]"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: TOTAL_DURATION, ease: 'linear' }}
+                  style={{ transformOrigin: 'left' }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* ── Scroll Indicator ── */}
       <ScrollIndicator />

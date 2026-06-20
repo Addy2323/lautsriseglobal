@@ -221,7 +221,7 @@ export default function AboutPage() {
               {
                 name: 'Kelvin Aron',
                 role: 'Co-Founder & Director of Operations',
-                image: '/images/Co-Founder.jpeg',
+                image: '/images/Co-Founder.png',
                 desc: 'Kelvin Aron oversees the day-to-day operations of LotusRise and ensures that the company’s strategic objectives are effectively executed. He works closely with all departments to maintain operational excellence and support business growth.',
                 instagram: 'https://instagram.com',
                 email: 'info@lotusriseglobal.com',

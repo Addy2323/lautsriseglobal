@@ -1,0 +1,29 @@
+import type { Metadata } from 'next'
+import { PageBanner } from '@/components/page-banner-v2'
+import { SiteFooter } from '@/components/site-footer'
+import { SiteHeader } from '@/components/site-header'
+import { BusinessSolutionsContent } from '@/components/business-solutions-content'
+
+export const metadata: Metadata = {
+  title: 'Business Solutions | LotusRise Global',
+  description: 'LotusRise Technology Services – Automated Service Explorer. Discover and estimate custom software, mobile money, and business automation costs.',
+}
+
+export default function BusinessSolutionsPage() {
+  return (
+    <>
+      <SiteHeader />
+      <main className="min-h-screen bg-background">
+        <PageBanner
+          eyebrow="Business Solutions"
+          title="LotusRise Technology Services"
+          description="Explore our IT services, estimate project costs, choose packages, and submit requests directly to our technology team."
+          breadcrumb="Business Solutions"
+          backgroundImage="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80"
+        />
+        <BusinessSolutionsContent />
+      </main>
+      <SiteFooter />
+    </>
+  )
+}

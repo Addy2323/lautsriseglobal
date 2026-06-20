@@ -240,7 +240,7 @@ export default function AboutPage() {
               {
                 name: 'Asia Mhema',
                 role: 'Manager, Marketing & Operations',
-                image: '/images/Manager marketing.jpeg',
+                image: '/images/manager_marketing.jpeg',
                 desc: 'Asia Mhema is responsible for marketing and operational activities across the organization. She focuses on strengthening the LotusRise brand, enhancing customer engagement, and ensuring efficient service delivery.',
                 instagram: 'https://instagram.com',
                 email: 'info@lotusriseglobal.com',
@@ -248,7 +248,7 @@ export default function AboutPage() {
               {
                 name: 'Ado Myamba',
                 role: 'Manager, Technology & Product Development',
-                image: '/images/Manager, Technology.jpeg',
+                image: '/images/manager_technology.jpeg',
                 desc: 'Ado Myamba leads technology and product development initiatives within LotusRise. He oversees the design, development, and continuous improvement of digital platforms while driving innovation and technology adoption across the company.',
                 instagram: 'https://www.instagram.com/wixeman86?igsh=ZjZkaDIwdnlrazlp',
                 email: 'info@lotusriseglobal.com',
@@ -256,7 +256,7 @@ export default function AboutPage() {
               {
                 name: 'Joseph Mhema',
                 role: 'Business Analyst',
-                image: '/images/Business Analyst.jpeg',
+                image: '/images/business_analyst.jpeg',
                 desc: 'Joseph serves as the Business Analyst within the Technology & Product Development team. He works closely with stakeholders and developers to ensure business requirements are effectively translated into practical and efficient technology solutions that support organizational objectives.',
                 instagram: 'https://www.instagram.com/menardj23?igsh=MXFmcXp0emt1M21veA==',
                 email: 'info@lotusriseglobal.com',

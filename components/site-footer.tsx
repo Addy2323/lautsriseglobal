@@ -25,7 +25,7 @@ const columns = [
   {
     title: 'Company',
     links: [
-      { label: 'About Us', href: '/#about' },
+      { label: 'About Us', href: '/about' },
       { label: 'Careers', href: '/careers' },
       { label: 'Blog & Insights', href: '/blog' },
       { label: 'Contact Us', href: '/contact' },
@@ -37,8 +37,8 @@ const columns = [
     links: [
       { label: 'Help Center', href: '/contact' },
       { label: 'Vendor Support', href: '/vendors' },
-      { label: 'Track Order', href: '#' },
-      { label: 'Privacy Policy', href: '#' },
+      { label: 'Track Order', href: 'https://logistics.lotusriseglobal.com/' },
+      { label: 'Privacy Policy', href: '/privacy' },
     ],
   },
 ]

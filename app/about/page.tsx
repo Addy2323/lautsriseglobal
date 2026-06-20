@@ -232,7 +232,7 @@ export default function AboutPage() {
               {
                 name: 'Schorastika Mwinuka',
                 role: 'Manager, Finance, Compliance & Investment',
-                image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80',
+                image: '/images/manager_finance.jpeg',
                 desc: 'Schorastika Mwinuka leads the company’s finance, compliance, and investment functions. She supports financial sustainability, regulatory compliance, and investment initiatives that contribute to the long-term success of LotusRise.',
                 instagram: 'https://instagram.com',
                 email: 'info@lotusriseglobal.com',

@@ -167,9 +167,9 @@ function GoldenParticles({ count = 28 }: { count?: number }) {
    SLIDE PROGRESS TIMINGS
    ═══════════════════════════════════════════════════════ */
 
-const AUTOPLAY_DELAY = 5000 // 5 seconds stationary
-const TRANSITION_SPEED = 1000 // 1 second crossfade
-const TOTAL_DURATION = (AUTOPLAY_DELAY + TRANSITION_SPEED) / 1000 // 6 seconds total
+const AUTOPLAY_DELAY = 8500 // 8.5 seconds stationary
+const TRANSITION_SPEED = 1500 // 1.5 seconds crossfade
+const TOTAL_DURATION = (AUTOPLAY_DELAY + TRANSITION_SPEED) / 1000 // 10 seconds total
 
 
 /* ═══════════════════════════════════════════════════════

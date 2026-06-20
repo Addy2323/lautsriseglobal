@@ -5,8 +5,12 @@ import { SiteHeader } from '@/components/site-header'
 import { BusinessSolutionsContent } from '@/components/business-solutions-content'
 
 export const metadata: Metadata = {
-  title: 'Business Solutions | LotusRise Global',
-  description: 'LotusRise Technology Services – Automated Service Explorer. Discover and estimate custom software, mobile money, and business automation costs.',
+  title: 'Business Solutions — Tech & Automation Services',
+  description:
+    'Accelerate business growth with LotusRise Technology Services. Estimate costs and request custom software, payment integrations, and automation in Tanzania.',
+  alternates: {
+    canonical: '/business-solutions',
+  },
 }
 
 export default function BusinessSolutionsPage() {

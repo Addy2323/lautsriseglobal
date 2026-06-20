@@ -38,6 +38,9 @@ const itemVariants: any = {
 export default function AboutPage() {
   return (
     <>
+      <title>About Us — Our Vision, Mission & Team | LotusRise Global</title>
+      <meta name="description" content="Learn about LotusRise Global, our vision, mission, and the leadership team driving digital commerce, logistics, and fintech solutions in Tanzania." />
+      <link rel="canonical" href="https://lotusriseglobal.com/about" />
       <SiteHeader />
 
       <main className="min-h-screen bg-background pt-24 pb-16 relative overflow-hidden font-sans text-foreground">

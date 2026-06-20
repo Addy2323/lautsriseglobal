@@ -5,8 +5,12 @@ import { SiteHeader } from '@/components/site-header'
 import { PortfolioPageContent } from '@/components/portfolio-page-content'
 
 export const metadata: Metadata = {
-  title: 'Our Portfolio | LotusRise Global',
-  description: 'Explore the projects and products that drive Africa\'s digital economy through LotusRise.',
+  title: 'Our Portfolio — Projects Powering Digital Economy',
+  description:
+    'Explore the LotusRise Global portfolio. We build digital commerce infrastructure, micro-investments, and last-mile logistics across East Africa.',
+  alternates: {
+    canonical: '/portfolio',
+  },
 }
 
 export default function PortfolioPage() {

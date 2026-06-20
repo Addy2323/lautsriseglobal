@@ -5,8 +5,12 @@ import { SiteHeader } from '@/components/site-header'
 import { BlogPageContent } from '@/components/blog-page-content'
 
 export const metadata: Metadata = {
-  title: 'Blog & Insights | LotusRise Global',
-  description: 'Stay updated with the latest news, tech innovations, logistics strategies, and digital commerce insights from the LotusRise team.',
+  title: 'Blog & Insights — E-Commerce, Logistics & Investing',
+  description:
+    'Stay updated with the latest trends, guides, and success stories in e-commerce, logistics, technology solutions, and micro-investing in Tanzania.',
+  alternates: {
+    canonical: '/blog',
+  },
 }
 
 export default function BlogPage() {

@@ -5,9 +5,12 @@ import { SiteHeader } from '@/components/site-header'
 import { AgentOnboarding } from '@/components/agent-onboarding'
 
 export const metadata: Metadata = {
-  title: 'Become an Agent | LotusRise Global',
+  title: 'Become a LotusRise Agent — Earn Commission Locally',
   description:
-    'Join the LotusRise agent network and earn income by serving customers and vendors in your community.',
+    'Join the LotusRise Agent Network in Tanzania. Facilitate local distribution, serve as a pickup node, and build a sustainable local business.',
+  alternates: {
+    canonical: '/agents',
+  },
 }
 
 export default function AgentsPage() {

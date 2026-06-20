@@ -5,9 +5,12 @@ import { SiteHeader } from '@/components/site-header'
 import { VendorOnboarding } from '@/components/vendor-onboarding'
 
 export const metadata: Metadata = {
-  title: 'Become a Vendor | LotusRise Global',
+  title: 'Sell on LotusRise — E-Commerce Solutions for Vendors',
   description:
-    'Join LotusRise Global as a verified vendor. Reach more customers, access logistics and grow your business across the marketplace.',
+    'Register as a verified vendor on LotusRise. List products, reach more customers across Tanzania, and utilize integrated logistics and wealth rewards.',
+  alternates: {
+    canonical: '/vendors',
+  },
 }
 
 export default function VendorsPage() {

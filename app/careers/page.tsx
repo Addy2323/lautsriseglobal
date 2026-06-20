@@ -5,8 +5,12 @@ import { SiteHeader } from '@/components/site-header'
 import { CareersPageContent } from '@/components/careers-page-content'
 
 export const metadata: Metadata = {
-  title: 'Careers | LotusRise Global',
-  description: 'Join a fast-growing team building the future of digital commerce in Africa. Discover our job openings and culture.',
+  title: 'Careers — Join the LotusRise Team',
+  description:
+    'Explore job openings and career opportunities at LotusRise Global. Grow with a team transforming commerce, logistics, and fintech in Tanzania.',
+  alternates: {
+    canonical: '/careers',
+  },
 }
 
 export default function CareersPage() {

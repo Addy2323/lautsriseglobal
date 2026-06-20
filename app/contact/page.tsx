@@ -5,8 +5,12 @@ import { SiteHeader } from '@/components/site-header'
 import { ContactPageContent } from '@/components/contact-page-content'
 
 export const metadata: Metadata = {
-  title: 'Contact Us | LotusRise Global',
-  description: 'Reach out to LotusRise Global for partnerships, support, inquiries, or feedback. We are here to help.',
+  title: 'Contact Us — Get in Touch with LotusRise',
+  description:
+    'Get in touch with the LotusRise Global support team. Contact us for marketplace, logistics, vendor solutions, agent opportunities, and investments.',
+  alternates: {
+    canonical: '/contact',
+  },
 }
 
 export default function ContactPage() {

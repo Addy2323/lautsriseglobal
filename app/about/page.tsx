@@ -102,7 +102,7 @@ export default function AboutPage() {
                 </span>
                 <h2 className="font-heading text-2xl font-extrabold text-ink">Our Mission</h2>
                 <p className="text-sm leading-relaxed text-muted-foreground font-medium">
-                  To unify global and regional supply chains under a single, highly transparent digital commerce platform. We provide independent merchants, local logistics agents, and buyers the automated tools they need to trade efficiently, earn rewards, and grow together.
+                  To deliver trusted e-commerce platforms, reliable logistics services, and innovative IT business solutions that connect markets, enhance operational efficiency, and create sustainable value for customers, partners, and communities.
                 </p>
               </div>
             </motion.div>
@@ -119,7 +119,7 @@ export default function AboutPage() {
                 </span>
                 <h2 className="font-heading text-2xl font-extrabold text-ink">Our Vision</h2>
                 <p className="text-sm leading-relaxed text-muted-foreground font-medium">
-                  To establish Africa's premier collaborative trade network where next-generation digital tools foster financial inclusion, supply chain transparency, and sustainable community wealth creation across every node of transaction.
+                  To become a leading e-commerce, logistics, and technology solutions company in Africa, empowering businesses and communities through innovative digital platforms, efficient supply chain services, and transformative business technologies.
                 </p>
               </div>
             </motion.div>

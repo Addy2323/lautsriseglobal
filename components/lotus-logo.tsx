@@ -5,7 +5,7 @@ import Link from 'next/link'
 export function LotusMark({ className }: { className?: string }) {
   return (
     <Image
-      src="/images/logo-small.png"
+      src="/logo/SVG/emblem_color.svg"
       alt="LotusRise Logo"
       width={52}
       height={44}

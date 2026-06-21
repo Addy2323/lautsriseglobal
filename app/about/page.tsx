@@ -240,7 +240,7 @@ export default function AboutPage() {
               {
                 name: 'Asia Mhema',
                 role: 'Manager, Marketing & Operations',
-                image: '/images/manager_marketing.jpeg',
+                image: '/images/manager_marketing.png',
                 desc: 'Asia Mhema is responsible for marketing and operational activities across the organization. She focuses on strengthening the LotusRise brand, enhancing customer engagement, and ensuring efficient service delivery.',
                 instagram: 'https://instagram.com',
                 email: 'info@lotusriseglobal.com',

@@ -18,7 +18,7 @@ const columns = [
     links: [
       { label: 'Marketplace', href: '/#services' },
       { label: 'Logistics', href: 'https://logistics.lotusriseglobal.com/' },
-      { label: 'Investment Rewards', href: '/#services' },
+      { label: 'Business Solutions', href: '/business-solutions' },
       { label: 'Agent Network', href: '/agents' },
     ],
   },

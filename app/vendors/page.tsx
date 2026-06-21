@@ -21,7 +21,7 @@ export default function VendorsPage() {
         <PageBanner
           eyebrow="Sell on LotusRise"
           title="Become a Vendor and grow your business"
-          description="Join a network of 500+ verified vendors selling smarter with integrated marketplace, logistics and investment rewards — all on one platform."
+          description="Join a network of 500+ verified vendors selling smarter with integrated marketplace, logistics and investment cashback — all on one platform."
           breadcrumb="Vendors"
           backgroundImage="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80"
         />

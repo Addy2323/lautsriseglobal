@@ -11,7 +11,7 @@ import { Stats } from '@/components/stats'
 export const metadata: Metadata = {
   title: "Tanzania's Digital Commerce, Marketplace & Logistics Ecosystem",
   description:
-    'LotusRise Global connects customers, vendors, agents, and logistics in Tanzania. Scale your retail store, access reliable cargo shipping, and earn micro-investment rewards.',
+    'LotusRise Global connects customers, vendors, agents, and logistics in Tanzania. Scale your retail store, access reliable cargo shipping, and earn micro-investment cashback.',
   alternates: {
     canonical: '/',
   },

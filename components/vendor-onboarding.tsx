@@ -47,7 +47,30 @@ const vendorConfig: OnboardingConfig = {
           required: true,
           options: ['Tanzania', 'Kenya', 'Uganda', 'Rwanda', 'Other'],
         },
-        { name: 'city', label: 'City', placeholder: 'e.g. Dar es Salaam' },
+        {
+          name: 'city',
+          label: 'City',
+          type: 'datalist',
+          required: true,
+          placeholder: 'Select or type City (e.g. Dar es Salaam)',
+          options: ['Dar es Salaam', 'Dodoma', 'Arusha', 'Mwanza', 'Mbeya', 'Morogoro', 'Tanga', 'Kahama', 'Tabora', 'Zanzibar', 'Moshi', 'Shinyanga', 'Iringa'],
+        },
+        {
+          name: 'district',
+          label: 'District',
+          type: 'datalist',
+          required: true,
+          placeholder: 'Select or type District (e.g. Ilala)',
+          options: ['Ilala', 'Temeke', 'Kinondoni', 'Ubungo', 'Kigamboni', 'Nyamagana', 'Ilemela', 'Dodoma Urban', 'Arusha City', 'Zanzibar Urban'],
+        },
+        {
+          name: 'street',
+          label: 'Street',
+          type: 'datalist',
+          required: true,
+          placeholder: 'Select or type Street (e.g. Kariakoo)',
+          options: ['Kariakoo', 'Posta', 'Mikocheni', 'Masaki', 'Oysterbay', 'Sinza', 'Kinondoni', 'Mbezi Beach', 'Kijitonyama', 'Mwenge', 'Tegeta', 'Upanga'],
+        },
         {
           name: 'description',
           label: 'Business Description',
@@ -72,8 +95,8 @@ const vendorConfig: OnboardingConfig = {
       title: 'Verification',
       description: 'Provide details so we can verify and approve your store.',
       fields: [
-        { name: 'regNumber', label: 'Business Registration No.', required: true, placeholder: 'e.g. 1234567' },
-        { name: 'taxId', label: 'Tax Identification (TIN)', placeholder: 'Optional' },
+        { name: 'regNumber', label: 'Incorporation Number', required: true, minLength: 8, maxLength: 15, placeholder: 'e.g. 12345678' },
+        { name: 'taxId', label: 'Tax Identification Number (TIN)', required: true, minLength: 8, maxLength: 15, placeholder: 'e.g. 12345678' },
         {
           name: 'monthlyVolume',
           label: 'Expected Monthly Orders',
@@ -87,10 +110,17 @@ const vendorConfig: OnboardingConfig = {
           placeholder: 'https://yourbusiness.com (optional)',
         },
         {
-          name: 'businessLicense',
-          label: 'Business License / Registration Document',
+          name: 'certIncorporation',
+          label: 'Certificate of Incorporation',
           type: 'file',
           required: true,
+          accept: '.pdf,.jpg,.jpeg,.png',
+        },
+        {
+          name: 'certTin',
+          label: 'Certificate of TIN (Optional)',
+          type: 'file',
+          required: false,
           accept: '.pdf,.jpg,.jpeg,.png',
         },
         {
@@ -121,18 +151,24 @@ function fileToBase64(file: File): Promise<string> {
 
 export function VendorOnboarding() {
   const handleSubmit = async (values: Record<string, string>, fileValues?: Record<string, File[]>) => {
-    const file = fileValues?.['businessLicense']?.[0]
-    const base64 = file ? await fileToBase64(file) : undefined
+    const incFile = fileValues?.['certIncorporation']?.[0]
+    const incBase64 = incFile ? await fileToBase64(incFile) : undefined
+
+    const tinFile = fileValues?.['certTin']?.[0]
+    const tinBase64 = tinFile ? await fileToBase64(tinFile) : undefined
 
     const payload = {
       businessName: values.businessName,
       email: values.email,
       phone: values.phone,
       businessType: values.category,
-      address: values.city ? `${values.city}, ${values.country}` : values.country,
-      licenseFileName: file ? file.name : undefined,
-      licenseFileData: base64,
+      address: [values.street, values.district, values.city, values.country].filter(Boolean).join(', '),
+      licenseFileName: incFile ? incFile.name : undefined,
+      licenseFileData: incBase64,
       taxId: values.taxId || undefined,
+      incorporationNumber: values.regNumber || undefined,
+      tinFileName: tinFile ? tinFile.name : undefined,
+      tinFileData: tinBase64,
     }
     const res = await submitVendorSubmission(payload)
     if (!res.success) throw new Error(res.error)

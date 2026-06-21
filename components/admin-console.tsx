@@ -288,6 +288,8 @@ export function AdminConsole() {
           address: '',
           licenseFileName: '',
           taxId: '',
+          incorporationNumber: '',
+          tinFileName: '',
           status: 'New'
         }
       }
@@ -395,6 +397,8 @@ export function AdminConsole() {
         address: record.address || '',
         licenseFileName: record.license_file_name || '',
         taxId: record.tax_id || '',
+        incorporationNumber: record.incorporation_number || '',
+        tinFileName: record.tin_file_name || '',
         status: record.status || 'New'
       }
     }
@@ -1676,8 +1680,10 @@ export function AdminConsole() {
                     <div className="grid grid-cols-3 gap-2"><span className="text-neutral-400 font-bold uppercase tracking-wider text-[9px]">Email</span><span className="col-span-2 font-bold text-white">{selectedRecord.email}</span></div>
                     <div className="grid grid-cols-3 gap-2"><span className="text-neutral-400 font-bold uppercase tracking-wider text-[9px]">Phone</span><span className="col-span-2 font-bold text-white">{selectedRecord.phone || 'N/A'}</span></div>
                     <div className="grid grid-cols-3 gap-2"><span className="text-neutral-400 font-bold uppercase tracking-wider text-[9px]">Business Type</span><span className="col-span-2 font-bold text-white">{selectedRecord.business_type || 'N/A'}</span></div>
-                    <div className="grid grid-cols-3 gap-2"><span className="text-neutral-400 font-bold uppercase tracking-wider text-[9px]">Tax ID</span><span className="col-span-2 font-bold text-white">{selectedRecord.tax_id || 'N/A'}</span></div>
-                    <div className="grid grid-cols-3 gap-2"><span className="text-neutral-400 font-bold uppercase tracking-wider text-[9px]">License Doc</span><span className="col-span-2 font-bold text-white">{selectedRecord.license_file_name ? <a href={`/uploads/${selectedRecord.license_file_name}`} download={selectedRecord.license_file_name} className="text-amber-500 hover:underline inline-flex items-center gap-1 font-bold"><Download className="h-3.5 w-3.5" />{selectedRecord.license_file_name}</a> : 'No document uploaded'}</span></div>
+                    <div className="grid grid-cols-3 gap-2"><span className="text-neutral-400 font-bold uppercase tracking-wider text-[9px]">Inc. Number</span><span className="col-span-2 font-bold text-white">{selectedRecord.incorporation_number || 'N/A'}</span></div>
+                    <div className="grid grid-cols-3 gap-2"><span className="text-neutral-400 font-bold uppercase tracking-wider text-[9px]">Tax ID / TIN</span><span className="col-span-2 font-bold text-white">{selectedRecord.tax_id || 'N/A'}</span></div>
+                    <div className="grid grid-cols-3 gap-2"><span className="text-neutral-400 font-bold uppercase tracking-wider text-[9px]">Cert. of Inc.</span><span className="col-span-2 font-bold text-white">{selectedRecord.license_file_name ? <a href={`/uploads/${selectedRecord.license_file_name}`} download={selectedRecord.license_file_name} className="text-amber-500 hover:underline inline-flex items-center gap-1 font-bold"><Download className="h-3.5 w-3.5" />{selectedRecord.license_file_name}</a> : 'No document uploaded'}</span></div>
+                    <div className="grid grid-cols-3 gap-2"><span className="text-neutral-400 font-bold uppercase tracking-wider text-[9px]">Cert. of TIN</span><span className="col-span-2 font-bold text-white">{selectedRecord.tin_file_name ? <a href={`/uploads/${selectedRecord.tin_file_name}`} download={selectedRecord.tin_file_name} className="text-amber-500 hover:underline inline-flex items-center gap-1 font-bold"><Download className="h-3.5 w-3.5" />{selectedRecord.tin_file_name}</a> : 'No document uploaded'}</span></div>
                     <div className="pt-2 border-t border-white/5"><span className="text-neutral-400 font-bold uppercase tracking-wider text-[9px] block mb-1">Store Address</span><p className="p-3 bg-white/5 rounded-xl text-neutral-300 font-semibold">{selectedRecord.address || 'N/A'}</p></div>
                   </div>
                 )}
@@ -1908,12 +1914,23 @@ export function AdminConsole() {
 
                     <div className="grid grid-cols-2 gap-3">
                       <div className="space-y-1">
-                        <label className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">Tax ID / TIN</label>
-                        <input type="text" value={formData.taxId || ''} onChange={e => setFormData({ ...formData, taxId: e.target.value })} className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/20 focus:border-amber-500 focus:outline-none" />
+                        <label className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">Incorporation Number *</label>
+                        <input type="text" required minLength={8} maxLength={15} value={formData.incorporationNumber || ''} onChange={e => setFormData({ ...formData, incorporationNumber: e.target.value })} className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/20 focus:border-amber-500 focus:outline-none" />
                       </div>
                       <div className="space-y-1">
-                        <label className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">License File Name</label>
-                        <input type="text" value={formData.licenseFileName || ''} onChange={e => setFormData({ ...formData, licenseFileName: e.target.value })} className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/20 focus:border-amber-500 focus:outline-none" placeholder="license_certificate.pdf" />
+                        <label className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">License File Name (Cert. of Inc.)</label>
+                        <input type="text" value={formData.licenseFileName || ''} onChange={e => setFormData({ ...formData, licenseFileName: e.target.value })} className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/20 focus:border-amber-500 focus:outline-none" placeholder="certificate_of_incorporation.pdf" />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">Tax ID / TIN *</label>
+                        <input type="text" required minLength={8} maxLength={15} value={formData.taxId || ''} onChange={e => setFormData({ ...formData, taxId: e.target.value })} className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/20 focus:border-amber-500 focus:outline-none" />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">TIN Certificate File Name</label>
+                        <input type="text" value={formData.tinFileName || ''} onChange={e => setFormData({ ...formData, tinFileName: e.target.value })} className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/20 focus:border-amber-500 focus:outline-none" placeholder="certificate_of_tin.pdf" />
                       </div>
                     </div>
 

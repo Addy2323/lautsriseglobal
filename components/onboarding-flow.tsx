@@ -25,13 +25,14 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 export type OnboardingField = {
   name: string
   label: string
-  type?: 'text' | 'email' | 'tel' | 'textarea' | 'select' | 'checkbox' | 'file' | 'number' | 'url' | 'info'
+  type?: 'text' | 'email' | 'tel' | 'textarea' | 'select' | 'checkbox' | 'file' | 'number' | 'url' | 'info' | 'datalist'
   placeholder?: string
   options?: string[]
   required?: boolean
   full?: boolean
   accept?: string          // for file inputs e.g. ".pdf,.jpg,.png"
   maxLength?: number       // for textarea char limit
+  minLength?: number       // for min length limit
   checkboxLabel?: string   // label text next to checkbox
   infoHtml?: string        // custom HTML to render for info types
   defaultValue?: string    // default initial value
@@ -74,6 +75,8 @@ function validateField(field: OnboardingField, value: string, files: File[]): st
     if (field.type === 'email' && !EMAIL_RE.test(value)) return 'Please enter a valid email address.'
     if (field.type === 'tel' && !PHONE_RE.test(value)) return 'Enter a valid phone number (e.g. +255 700 000 000).'
     if (field.type === 'url' && !URL_RE.test(value)) return 'Enter a valid URL starting with http:// or https://'
+    if (field.minLength && value.trim().length < field.minLength) return `Must be at least ${field.minLength} characters/digits.`
+    if (field.maxLength && field.type !== 'textarea' && value.trim().length > field.maxLength) return `Must be no more than ${field.maxLength} characters/digits.`
   }
   return null
 }
@@ -984,6 +987,37 @@ function Field({
             </option>
           ))}
         </select>
+        {error && (
+          <p className="mt-1 text-xs text-destructive">{error}</p>
+        )}
+      </motion.div>
+    )
+  }
+
+  /* ---------- Datalist (Select + Typeable) ---------- */
+  if (field.type === 'datalist') {
+    return (
+      <motion.div
+        className={isFullWidth ? 'sm:col-span-2' : ''}
+        animate={shake ? shakeAnimation : {}}
+      >
+        <label className="text-sm font-medium text-ink">
+          {field.label}
+          {field.required && <span className="text-gold-deep"> *</span>}
+        </label>
+        <input
+          type="text"
+          list={`datalist-${field.name}`}
+          value={value}
+          placeholder={field.placeholder}
+          onChange={(e) => onChange(e.target.value)}
+          className={base}
+        />
+        <datalist id={`datalist-${field.name}`}>
+          {field.options?.map((opt) => (
+            <option key={opt} value={opt} />
+          ))}
+        </datalist>
         {error && (
           <p className="mt-1 text-xs text-destructive">{error}</p>
         )}

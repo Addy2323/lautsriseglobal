@@ -13,6 +13,8 @@ export interface VendorSubmission {
   address: string | null
   license_file_name: string | null
   tax_id: string | null
+  incorporation_number: string | null
+  tin_file_name: string | null
   status: string
   created_at: Date
 }
@@ -72,14 +74,20 @@ export async function submitVendorSubmission(data: {
   licenseFileName?: string
   licenseFileData?: string
   taxId?: string
+  incorporationNumber?: string
+  tinFileName?: string
+  tinFileData?: string
 }) {
   await initDb()
   if (data.licenseFileName && data.licenseFileData) {
     await saveUploadedFile(data.licenseFileName, data.licenseFileData)
   }
+  if (data.tinFileName && data.tinFileData) {
+    await saveUploadedFile(data.tinFileName, data.tinFileData)
+  }
   const sql = `
-    INSERT INTO vendor_submissions (business_name, email, phone, business_type, address, license_file_name, tax_id)
-    VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;
+    INSERT INTO vendor_submissions (business_name, email, phone, business_type, address, license_file_name, tax_id, incorporation_number, tin_file_name)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;
   `
   try {
     const res = await query(sql, [
@@ -90,6 +98,8 @@ export async function submitVendorSubmission(data: {
       data.address || null,
       data.licenseFileName || null,
       data.taxId || null,
+      data.incorporationNumber || null,
+      data.tinFileName || null,
     ])
     revalidatePath('/admin')
     return { success: true, data: res.rows[0] as VendorSubmission }
@@ -395,13 +405,15 @@ export async function updateVendorSubmission(id: number, data: {
   address: string
   licenseFileName?: string
   taxId?: string
+  incorporationNumber?: string
+  tinFileName?: string
   status: string
 }) {
   await initDb()
   const sql = `
     UPDATE vendor_submissions
-    SET business_name = $1, email = $2, phone = $3, business_type = $4, address = $5, license_file_name = $6, tax_id = $7, status = $8
-    WHERE id = $9
+    SET business_name = $1, email = $2, phone = $3, business_type = $4, address = $5, license_file_name = $6, tax_id = $7, incorporation_number = $8, tin_file_name = $9, status = $10
+    WHERE id = $11
     RETURNING *;
   `
   try {
@@ -413,6 +425,8 @@ export async function updateVendorSubmission(id: number, data: {
       data.address || null,
       data.licenseFileName || null,
       data.taxId || null,
+      data.incorporationNumber || null,
+      data.tinFileName || null,
       data.status,
       id
     ])

@@ -16,7 +16,7 @@ const services = [
   {
     icon: ShoppingBag,
     title: 'LotusRise Marketplace',
-    desc: 'Buy products from verified vendors across multiple categories.',
+    desc: 'Buy products from verified vendors and earn cashback that can be directed to licensed investment providers.',
     cta: 'Shop Now',
     href: '/#services',
   },
@@ -26,13 +26,6 @@ const services = [
     desc: 'Source, ship and deliver products locally and internationally.',
     cta: 'Learn More',
     href: 'https://logistics.lotusriseglobal.com/',
-  },
-  {
-    icon: Gift,
-    title: 'Investment Rewards',
-    desc: 'Earn cashback and rewards that can be directed to licensed investment providers.',
-    cta: 'Explore Rewards',
-    href: '/#services',
   },
   {
     icon: Briefcase,
@@ -58,7 +51,7 @@ export function Services() {
         initial="hidden"
         whileInView="show"
         viewport={viewportOnce}
-        className="mx-auto grid max-w-7xl gap-4 px-4 sm:px-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+        className="mx-auto grid max-w-7xl gap-4 px-4 sm:px-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
       >
         {services.map(({ icon: Icon, title, desc, cta, href }) => (
           <motion.article

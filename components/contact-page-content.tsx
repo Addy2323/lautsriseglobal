@@ -26,8 +26,8 @@ const faqs = [
     answer: 'Standard deliveries within major metropolitan areas (like Dar es Salaam) take between 12 to 24 hours. For upcountry or cross-border shipping across East Africa, deliveries typically take 2 to 5 business days.'
   },
   {
-    question: 'How do investment rewards work?',
-    answer: 'When you purchase from verified vendors, a percentage of your cashback reward is automatically directed to licensed investment funds (like UTT AMIS in Tanzania) under your registered name, helping you save and grow your capital automatically.'
+    question: 'How does investment cashback work?',
+    answer: 'When you purchase from verified vendors, a percentage of your cashback is automatically directed to licensed investment funds (like UTT AMIS in Tanzania) under your registered name, helping you save and grow your capital automatically.'
   },
   {
     question: 'Where does LotusRise operate?',

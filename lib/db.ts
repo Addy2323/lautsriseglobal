@@ -48,6 +48,8 @@ export async function initDb() {
       address TEXT,
       license_file_name VARCHAR(255),
       tax_id VARCHAR(100),
+      incorporation_number VARCHAR(100),
+      tin_file_name VARCHAR(255),
       status VARCHAR(50) DEFAULT 'New',
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
@@ -135,6 +137,8 @@ export async function initDb() {
   try {
     await query(createTablesQuery)
     await query('ALTER TABLE agent_submissions ADD COLUMN IF NOT EXISTS tin_file_name VARCHAR(255);')
+    await query('ALTER TABLE vendor_submissions ADD COLUMN IF NOT EXISTS incorporation_number VARCHAR(100);')
+    await query('ALTER TABLE vendor_submissions ADD COLUMN IF NOT EXISTS tin_file_name VARCHAR(255);')
     await query(seedJobsQuery)
 
     // Seed services catalog if empty
